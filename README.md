@@ -8,7 +8,12 @@ npm install
 npm install vue-wordcloud
 npm run dev
 ```
-
+```
+Coding....
+git add {coding file}
+git commit -c "{message}"
+git push orign dev
+```
 ```
 here is dev
 ```
