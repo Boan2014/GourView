@@ -8,3 +8,7 @@ npm install
 npm install vue-wordcloud
 npm run dev
 ```
+
+```
+creating a new branch is quick
+```
