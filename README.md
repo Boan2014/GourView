@@ -10,5 +10,5 @@ npm run dev
 ```
 
 ```
-creating a new branch is quick & simple
+here is master
 ```
