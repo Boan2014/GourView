@@ -10,9 +10,9 @@ npm run dev
 ```
 
 ```
-<<<<<<< HEAD
-creating a new branch is quick & simple
-=======
 creating a new branch is quick and quick
->>>>>>> feature
+```
+
+```
+check branch 
 ```
