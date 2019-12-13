@@ -1,11 +1,18 @@
 <template>
-  <div class="search">
+  <div class="search bg">
+    
 
-    <v-text-field v-model="$store.state.name"></v-text-field>
+    <div id="button-area3">
+    <h3 class="title">{{message}}</h3>
+    </div>
+<div id="button-area2">
+    <input class="normal-textbox" v-model="$store.state.name">
+    </div>
 
+<div id="button-area">
     <v-btn @click="Search">Search</v-btn>
     <v-btn @click="clear">clear</v-btn>
-
+</div>
     <wordcloud v-if="$store.state.predictLabel"
       :data="$store.state.predictLabel"
       nameKey="name"
@@ -14,7 +21,12 @@
       :showTooltip="true"
       :wordClick="wordClickHandler">
     </wordcloud>
-
+    <div class="bg"></div>
+ <p class="aboutpage">
+   <NuxtLink to="/about">
+   About page
+   </NuxtLink>
+   </p>
   </div>
 
 </template>
@@ -47,6 +59,7 @@ export default {
   data() {
     return {
       myColors: ['#1f77b4', '#629fc9', '#94bedb', '#c9e0ef'],
+      message:"GOURVIEW",
     }
   }
 }
@@ -55,5 +68,38 @@ export default {
 <style scoped>
   .search {
   text-align: center;
-}
+  }
+  .bg {
+  background-image:url("http://img1.juimg.com/180104/355840-1P10404223646.jpg");
+  }
+  #button-area {
+    padding-top: 30px;
+  }
+  #button-area2 {
+    padding-top: 50px;
+  }
+  #button-area3 {
+    padding-top: 200px;
+    color:rgb(11, 12, 11);
+      }
+  
+  .normal-textbox {
+    color:#000000;
+    background-color: #f5f4f1;
+    border:1px black solid;
+    width:500px;
+    height: 50px;
+  }
+  .title{
+    background-color:burlywood;
+    color:black;
+    font-size: 4rem !important;
+    line-height: 5rem;
+    
+  }
+  .aboutpage{
+    background-color:rgba(34, 33, 33, 0.5);
+    text-align:right;
+  }
+  
 </style>
