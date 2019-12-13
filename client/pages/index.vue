@@ -1,11 +1,12 @@
 <template>
   <div class="search">
 
-    <v-text-field v-model="$store.state.name"></v-text-field>
-
-    <v-btn @click="Search">Search</v-btn>
+    
+   <v-btn  @click="Move">retty</v-btn>
+    <v-btn  @click="Search">hh</v-btn>
     <v-btn @click="clear">clear</v-btn>
-
+     <nuxt-link to="/about" > About</nuxt-link>
+    <v-text-field id="textbox" v-model="$store.state.name"></v-text-field>
     <wordcloud v-if="$store.state.predictLabel"
       :data="$store.state.predictLabel"
       nameKey="name"
@@ -48,6 +49,17 @@ export default {
     return {
       myColors: ['#1f77b4', '#629fc9', '#94bedb', '#c9e0ef'],
     }
+  },
+  methods:{
+    Search: function(){
+      textbox.moveTo(200, 100);
+      textbox.focus();
+    },
+    Move: function(){
+    location.href = 'https://retty.me/theme/101041400/';
+
+}    
+
   }
 }
 </script>
@@ -55,5 +67,13 @@ export default {
 <style scoped>
   .search {
   text-align: center;
+  }
+
+  .textbox{
+  padding-top: 500px;
+
+ ;
+
+
 }
 </style>
