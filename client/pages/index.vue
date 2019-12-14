@@ -1,5 +1,6 @@
 <template>
   <div class="search bg">
+
     
 
     <div id="button-area3">
@@ -12,7 +13,12 @@
 <div id="button-area">
     <v-btn @click="Search">Search</v-btn>
     <v-btn @click="clear">clear</v-btn>
+
+
 </div>
+
+<div v-if="ChangePage" ></div>
+
     <wordcloud v-if="$store.state.predictLabel"
       :data="$store.state.predictLabel"
       nameKey="name"
@@ -21,12 +27,18 @@
       :showTooltip="true"
       :wordClick="wordClickHandler">
     </wordcloud>
-    <div class="bg"></div>
- <p class="aboutpage">
-   <NuxtLink to="/about">
-   About page 
-   </NuxtLink>
-   </p>
+
+    <h1>{{ $store.state.posScore }}</h1>
+    <h3>{{ $store.state.posRev }}</h3>
+
+    <h1>{{ $store.state.negScore }}</h1>
+    <h3>{{ $store.state.negRev }}</h3>
+
+    <p>
+      <NuxtLink to="/about">
+        About page
+      </NuxtLink>
+    </p>
 
   </div>
 
@@ -35,12 +47,14 @@
 <script>
 import axios from "axios";
 import wordcloud from 'vue-wordcloud';
+
 export default {
+  name: 'demo',
   head: {
     title: 'Home page'
   },
   components: {
-    wordcloud
+    wordcloud,
   },
   methods :{
     // 入力値を初期値に戻すメソッド
@@ -49,10 +63,22 @@ export default {
     },
     // APIを叩くメソッド
     Search() {
-      axios.post("http://localhost:5045/api/predict", {
-          name: this.$store.state.name
-        }).then((response) => {this.$store.commit('setPredictLabel', response.data.result)})
+      console.log('test')
+      this.isSearch= true
+      this.$router.push('/afterSearch')
+
+    
+
+      // axios.post("http://localhost:5045/api/predict", {
+      //     name: this.$store.state.name
+      //   }).then((response) => {this.$store.commit('setPredictLabel', response.data.result)}).catch()
+      
+      
+      
       },
+
+    
+
     wordClickHandler(name, value, vm) {
       console.log('wordClickHandler', name, value, vm);
     }
@@ -61,8 +87,15 @@ export default {
     return {
       myColors: ['#1f77b4', '#629fc9', '#94bedb', '#c9e0ef'],
       message:"GOURVIEW",
+      isSearch:false,
+      ChangePage:false,
+      dummy:[{"name":"おいしい","value":3}]
+
     }
-  }
+  },
+ 
+
+  
 }
 </script>
 
