@@ -12,7 +12,9 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.3.6",
+    "apexcharts": "^3.10.1",
     "nuxt": "^2.0.0",
+    "vue-apexcharts": "^1.5.1",
     "vue-css-donut-chart": "^1.1.6",
     "vue-feedback-reaction": "^1.1.0",
     "vue-wordcloud": "^1.1.1"

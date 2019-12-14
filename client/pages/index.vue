@@ -19,7 +19,7 @@
   <div v-if="loadig">Searching・・・・</div>
 
     <p>
-      <NuxtLink to="/about">
+      <NuxtLink to="/about" class=>
         About page
       </NuxtLink>
     </p>
