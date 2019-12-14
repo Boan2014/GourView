@@ -3,8 +3,9 @@
 
     
 
-    <div id="button-area3">
-    <h3 class="title">{{message}}</h3>
+    <div id="background">
+    <h1 class="title">{{message}}</h1>
+    <h1 class="subtitle">Explor with a single glance</h1>
     </div>
 <div id="button-area2">
     <input class="normal-textbox" v-model="$store.state.name">
@@ -34,9 +35,14 @@
     <h1>{{ $store.state.negScore }}</h1>
     <h3>{{ $store.state.negRev }}</h3>
 
-    <p>
+    <p class="aboutpage">
       <NuxtLink to="/about">
         About page
+      </NuxtLink>
+    </p>
+     <p class="aboutpage">
+      <NuxtLink to="/github">
+        Github
       </NuxtLink>
     </p>
 
@@ -104,7 +110,7 @@ export default {
   text-align: center;
   }
   .bg {
-  background-image:url("~@/static/BK_01.jpg");
+  background-color:rgb(245, 245, 243);
   
   }
   #button-area {
@@ -113,28 +119,37 @@ export default {
   #button-area2 {
     padding-top: 50px;
   }
-  #button-area3 {
-    padding-top: 200px;
-    color:rgb(11, 12, 11);
+  #background {
+
+    background-image:url("~@/static/BK_04.jpg");
+    background-size:100%;
+    height: 25rem;
+    padding-top: 130px;
+    text-align:center;
+    
       }
   
   .normal-textbox {
     color:#000000;
-    background-color: #f7f2f2;
+    background-color: rgb(245, 245, 243);
     border:1px rgb(201, 67, 4) solid;
     width:500px;
     height: 50px;
   }
   .title{
-    background-color:rgba(12, 12, 12, 0.932);
     color:rgb(243, 89, 18);
-    font-size: 4rem !important;
-    line-height: 5rem;
-    
+    font-size: 5rem !important;
   }
   .aboutpage{
     background-color:rgba(34, 33, 33, 0.5);
     text-align:right;
+  }
+  .subtitle{
+    font-family:'Trebuchet';
+    font-size:1.5rem;
+    color:rgb(243, 89, 18);
+   
+    
   }
   
 </style>
