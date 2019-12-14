@@ -4,7 +4,7 @@ export const strict = false;
 
 const　initialState = {
   name: '',
-  predictLabel: [],
+  predictLabel: [{"name":"おいしい","value":3}],
 };
 
 export const state = () => Object.assign({}, initialState);
