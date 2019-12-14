@@ -14,7 +14,7 @@
       <v-btn @click="clear">clear</v-btn>
     </div>
 
-    <div v-if="ChangePage" ></div>
+  <div v-if="ChangePage" ></div>
 
     <wordcloud v-if="$store.state.predictLabel"
       :data="$store.state.predictLabel"
