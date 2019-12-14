@@ -3,8 +3,8 @@
 <div class='header'>
 
 
-<img  class='image' src='@/assets\img\{684FC80B-7F42-48CE-8416-F7FB9B6F8248}.png.jpg'></img>
-<input class="normal-textbox" v-model="$store.state.name">
+<img  class='image' @click="Home"  src='@/assets\img\{684FC80B-7F42-48CE-8416-F7FB9B6F8248}.png.jpg'></img>
+<input class="normal-textbox" v-model="$store.state.name" style="border-radius:80px">
 
 <div class='botton'>
 <v-btn @click="Search">Search</v-btn>
@@ -24,6 +24,17 @@
 
 </template>
 
+<script>
+export default {
+methods: {
+    Home(){       
+     this.$router.push('/')
+       },     
+    },
+}
+
+ </script>
+
 <style scoped>
   .bg {
    background-color:lightcyan;
@@ -32,7 +43,7 @@
   }
 
   .botton{
-   width:15rem;
+   width:15%;
    margin-right:8px;
     
   }
@@ -48,13 +59,12 @@
     color:#000000;
     background-color: #f5f4f1;
     border:1px black solid;
-    width:200px;
-    height: 30px;
+    width:60%;
     margin-right:16px;
   }
 
   .image{
-    width:100px;
+    width:20%;
     margin-right:8px;
     
 

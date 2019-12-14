@@ -7,7 +7,7 @@
     <h3 class="title">{{message}}</h3>
     </div>
 <div id="button-area2">
-    <input class="normal-textbox" v-model="$store.state.name">
+    <input class="normal-textbox" @keyup.enter="Search" v-model="$store.state.name" style="border-radius:80px">
     </div>
 
 <div id="button-area">
@@ -105,6 +105,8 @@ export default {
   }
   .bg {
   background-image:url("http://img1.juimg.com/180104/355840-1P10404223646.jpg");
+  width:200vh !important;
+  
   }
   #button-area {
     padding-top: 30px;
@@ -127,7 +129,7 @@ export default {
   .title{
     background-color:burlywood;
     color:black;
-    font-size: 4rem !important;
+    font-size: 4rem;
     line-height: 5rem;
     
   }
