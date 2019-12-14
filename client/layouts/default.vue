@@ -84,6 +84,11 @@
       app
     >
       <span>&copy; 2019</span>
+      
+      <span><a href="/">About</a></span>
+
+      <span><a href="/">Help</a></span>
+
     </v-footer>
   </v-app>
 </template>

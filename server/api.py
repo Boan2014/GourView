@@ -1,5 +1,5 @@
 import responder
-from handlers import PredictionResource
+from handlers import WordCloudResource
 
 api = responder.API(
     cors=True,
@@ -9,7 +9,7 @@ api = responder.API(
                  "allow_headers": "*"
                  })
 
-api.add_route('/api/predict', PredictionResource)
+api.add_route('/api/predict', WordCloudResource)
 
 
 if __name__ == '__main__':

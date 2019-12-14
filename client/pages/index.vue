@@ -1,5 +1,8 @@
 <template>
   <div class="search">
+    
+    <h1 class="title">グルビュー</h1>
+
 
     <v-text-field v-model="$store.state.name"></v-text-field>
 
@@ -15,6 +18,18 @@
       :wordClick="wordClickHandler">
     </wordcloud>
 
+    <h1>{{ $store.state.posScore }}</h1>
+    <h3>{{ $store.state.posRev }}</h3>
+
+    <h1>{{ $store.state.negScore }}</h1>
+    <h3>{{ $store.state.negRev }}</h3>
+
+    <p>
+      <NuxtLink to="/about">
+        About page
+      </NuxtLink>
+    </p>
+
   </div>
 
 </template>
@@ -22,12 +37,14 @@
 <script>
 import axios from "axios";
 import wordcloud from 'vue-wordcloud';
+
 export default {
+  name: 'demo',
   head: {
     title: 'Home page'
   },
   components: {
-    wordcloud
+    wordcloud,
   },
   methods :{
     // 入力値を初期値に戻すメソッド
