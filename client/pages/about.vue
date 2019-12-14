@@ -1,10 +1,6 @@
 <template>
  <div class="bg">
-    <p >
-    <NLink to="/">
-      Home page
-    </NLink>
-    </p>
+    
    <h1 class="title">{{message}}</h1>
 
    <p class="introduce"> 
@@ -12,7 +8,9 @@
      </br> 
      bb 
      </p>
-   
+   <p class="homepage">
+      <NuxtLink to="/">←Home</NuxtLink>
+   </p>
     <div class="bg"></div>
   </div>
   
@@ -43,8 +41,14 @@ export default {
   font-size: 1.5rem !important;
   
 }
-.bg{
+.bg {
   background-image:url("~@/static/BK_01.jpg");
+  background-size: cover;
+  }
+.homepage{
+  color:rgba(20, 4, 4, 0.5);
+  text-align:right;
+  width:98%;
 }
 
 </style>
