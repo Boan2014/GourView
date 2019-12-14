@@ -6,7 +6,7 @@
     </div>
 
     <div id="button-area2">
-        <input class="normal-textbox" v-model="$store.state.name">
+        <input class="normal-textbox" @keyup.enter="Search" v-model="$store.state.name">
     </div>
 
     <div id="button-area">
@@ -15,21 +15,6 @@
     </div>
 
   <div v-if="ChangePage" ></div>
-
-    <wordcloud v-if="$store.state.predictLabel"
-      :data="$store.state.predictLabel"
-      nameKey="name"
-      valueKey="value"
-      :color="myColors"
-      :showTooltip="true"
-      :wordClick="wordClickHandler">
-    </wordcloud>
-
-    <h1>{{ $store.state.posScore }}</h1>
-    <h3>{{ $store.state.posRev }}</h3>
-
-    <h1>{{ $store.state.negScore }}</h1>
-    <h3>{{ $store.state.negRev }}</h3>
 
     <p>
       <NuxtLink to="/about">
@@ -63,21 +48,9 @@ export default {
       console.log('test')
       this.isSearch= true
       this.$router.push('/afterSearch')
-
-    
-
-      // axios.post("http://localhost:5045/api/predict", {
-      //     name: this.$store.state.name
-      //   }).then((response) => {this.$store.commit('setPredictLabel', response.data.result)}).catch()
-      
-      
-      
-      },
-
-    
-
-    wordClickHandler(name, value, vm) {
-      console.log('wordClickHandler', name, value, vm);
+      axios.post("http://localhost:5045/api/predict", {
+          name: this.$store.state.name
+        }).then((response) => {this.$store.commit('setPredictLabel', response.data.result)})
     }
   },
   data() {
@@ -86,13 +59,8 @@ export default {
       message:"GOURVIEW",
       isSearch:false,
       ChangePage:false,
-      dummy:[{"name":"おいしい","value":3}]
-
     }
   },
- 
-
-  
 }
 </script>
 
@@ -101,7 +69,7 @@ export default {
   text-align: center;
   }
   .bg {
-  background-image:url("http://img1.juimg.com/180104/355840-1P10404223646.jpg");
+  background-image:url("~@/static/BK_01.jpg");
   }
   #button-area {
     padding-top: 30px;
@@ -118,7 +86,7 @@ export default {
     color:#000000;
     background-color: #f5f4f1;
     border:1px black solid;
-    width:500px;
+    width:600px;
     height: 50px;
   }
   .title{

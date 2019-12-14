@@ -2,7 +2,7 @@
   <div class="bg">
     <div class='header'>
       <img class='image' src='https://4.bp.blogspot.com/-aJjlevJyK9U/XGjx40QThrI/AAAAAAABRco/j9aRPnYHpX4PU6RZjhTWRh6_8xnPfbNEQCLcBGAs/s800/animal_chara_computer_azarashi.png'></img>
-      <input class="normal-textbox" v-model="$store.state.name">
+      <input class="normal-textbox" @keyup.enter="Search" v-model="$store.state.name">
         <div class='botton'>
           <v-btn @click="Search">Search</v-btn>
           <v-btn  @click="clear">clear</v-btn>
@@ -18,6 +18,12 @@
       :wordClick="wordClickHandler">
     </wordcloud>
 
+    <h1>{{ $store.state.posScore }}</h1>
+    <h5>{{ $store.state.posRev }}</h5>
+
+    <h1>{{ $store.state.negScore }}</h1>
+    <h5>{{ $store.state.negRev }}</h5>
+    
     <p class="homepage">
       <NuxtLink to="/">←Home</NuxtLink>
    </p>
@@ -71,7 +77,7 @@ export default {
 </script>
 <style scoped>
   .bg {
-   background-color:lightcyan;
+   background-color:white;
    height:100vh;
 
   }
