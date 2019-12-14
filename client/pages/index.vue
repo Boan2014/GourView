@@ -14,7 +14,9 @@
       <v-btn @click="clear">clear</v-btn>
     </div>
 
-  <div v-if="ChangePage" ></div>
+
+  <img v-if="loadig" src='https://4.bp.blogspot.com/-aJjlevJyK9U/XGjx40QThrI/AAAAAAABRco/j9aRPnYHpX4PU6RZjhTWRh6_8xnPfbNEQCLcBGAs/s800/animal_chara_computer_azarashi.png'></img>
+  <div v-if="loadig">Searching・・・・</div>
 
     <p>
       <NuxtLink to="/about">
@@ -46,12 +48,13 @@ export default {
     // APIを叩くメソッド
     Search() {
       console.log('test')
-      this.isSearch= true
+      this.loading= true
       this.$router.push('/afterSearch')
       axios.post("http://localhost:5045/api/predict", {
           name: this.$store.state.name
-        }).then((response) => {this.$store.commit('setPredictLabel', response.data.result)})
-    }
+        }).then((response) => {this.$store.commit('setPredictLabel', response.data.result),this.loading = false})
+    },
+    
   },
   data() {
     return {
@@ -59,6 +62,7 @@ export default {
       message:"GOURVIEW",
       isSearch:false,
       ChangePage:false,
+      loading: false,
     }
   },
 }
@@ -70,6 +74,7 @@ export default {
   }
   .bg {
   background-image:url("~@/static/BK_01.jpg");
+  background-size: cover;
   }
   #button-area {
     padding-top: 30px;
@@ -96,9 +101,12 @@ export default {
     line-height: 5rem;
     
   }
+
+  
   .aboutpage{
     background-color:rgba(34, 33, 33, 0.5);
     text-align:right;
+    text-decoration: none !important;
   }
   
 </style>
