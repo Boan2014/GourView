@@ -24,9 +24,10 @@
     <div class="bg"></div>
  <p class="aboutpage">
    <NuxtLink to="/about">
-   About page
+   About page 
    </NuxtLink>
    </p>
+
   </div>
 
 </template>
@@ -70,7 +71,8 @@ export default {
   text-align: center;
   }
   .bg {
-  background-image:url("http://img1.juimg.com/180104/355840-1P10404223646.jpg");
+  background-image:url("~@/static/BK_01.jpg");
+  
   }
   #button-area {
     padding-top: 30px;
@@ -85,14 +87,14 @@ export default {
   
   .normal-textbox {
     color:#000000;
-    background-color: #f5f4f1;
-    border:1px black solid;
+    background-color: #f7f2f2;
+    border:1px rgb(201, 67, 4) solid;
     width:500px;
     height: 50px;
   }
   .title{
-    background-color:burlywood;
-    color:black;
+    background-color:rgba(12, 12, 12, 0.932);
+    color:rgb(243, 89, 18);
     font-size: 4rem !important;
     line-height: 5rem;
     
