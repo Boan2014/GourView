@@ -1,38 +1,20 @@
 <template>
   <div class="search bg">
-
     
-
     <div id="button-area3">
-    <h3 class="title">{{message}}</h3>
-    </div>
-<div id="button-area2">
-    <input class="normal-textbox" @keyup.enter="Search" v-model="$store.state.name" style="border-radius:80px">
+      <h3 class="title">{{message}}</h3>
     </div>
 
-<div id="button-area">
-    <v-btn @click="Search">Search</v-btn>
-    <v-btn @click="clear">clear</v-btn>
+    <div id="button-area2">
+        <input class="normal-textbox" @keyup.enter="Search" v-model="$store.state.name" style="border-radius:80px">
+    </div>
 
+    <div id="button-area">
+      <v-btn @click="Search">Search</v-btn>
+      <v-btn @click="clear">clear</v-btn>
+    </div>
 
-</div>
-
-<div v-if="ChangePage" ></div>
-
-    <wordcloud v-if="$store.state.predictLabel"
-      :data="$store.state.predictLabel"
-      nameKey="name"
-      valueKey="value"
-      :color="myColors"
-      :showTooltip="true"
-      :wordClick="wordClickHandler">
-    </wordcloud>
-
-    <h1>{{ $store.state.posScore }}</h1>
-    <h3>{{ $store.state.posRev }}</h3>
-
-    <h1>{{ $store.state.negScore }}</h1>
-    <h3>{{ $store.state.negRev }}</h3>
+  <div v-if="ChangePage" ></div>
 
     <p>
       <NuxtLink to="/about">
@@ -66,21 +48,9 @@ export default {
       console.log('test')
       this.isSearch= true
       this.$router.push('/afterSearch')
-
-    
-
-      // axios.post("http://localhost:5045/api/predict", {
-      //     name: this.$store.state.name
-      //   }).then((response) => {this.$store.commit('setPredictLabel', response.data.result)}).catch()
-      
-      
-      
-      },
-
-    
-
-    wordClickHandler(name, value, vm) {
-      console.log('wordClickHandler', name, value, vm);
+      axios.post("http://localhost:5045/api/predict", {
+          name: this.$store.state.name
+        }).then((response) => {this.$store.commit('setPredictLabel', response.data.result)})
     }
   },
   data() {
@@ -89,13 +59,8 @@ export default {
       message:"GOURVIEW",
       isSearch:false,
       ChangePage:false,
-      dummy:[{"name":"おいしい","value":3}]
-
     }
   },
- 
-
-  
 }
 </script>
 
@@ -104,9 +69,7 @@ export default {
   text-align: center;
   }
   .bg {
-  background-image:url("http://img1.juimg.com/180104/355840-1P10404223646.jpg");
-  width:200vh !important;
-  
+  background-image:url("~@/static/BK_01.jpg");
   }
   #button-area {
     padding-top: 30px;
@@ -123,7 +86,7 @@ export default {
     color:#000000;
     background-color: #f5f4f1;
     border:1px black solid;
-    width:500px;
+    width:600px;
     height: 50px;
   }
   .title{
