@@ -7,17 +7,11 @@
     </p>
    <h1 class="title">{{message}}</h1>
 
-   <h1 class="introduce">日本語</h1>
-   <h1 class="introduce">私たちは</h1>
-    <h1 class="introduce">私たちは</h1>
-     <h1 class="introduce">私たちは</h1>
-      <h1 class="introduce">私たちは</h1>
-   <h1 class="introduce">ENGLISH</h1>
-   <h1 class="introduce">A</h1>
-   <h1 class="introduce">B</h1>
-   <h1 class="introduce">C</h1>
-   <h1 class="introduce">D</h1>
-  
+   <p class="introduce"> 
+     aa 
+     </br> 
+     bb 
+     </p>
    
     <div class="bg"></div>
   </div>
