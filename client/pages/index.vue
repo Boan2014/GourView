@@ -1,23 +1,20 @@
 <template>
   <div class="search bg">
-
     
-
     <div id="button-area3">
-    <h3 class="title">{{message}}</h3>
-    </div>
-<div id="button-area2">
-    <input class="normal-textbox" v-model="$store.state.name">
+      <h3 class="title">{{message}}</h3>
     </div>
 
-<div id="button-area">
-    <v-btn @click="Search">Search</v-btn>
-    <v-btn @click="clear">clear</v-btn>
+    <div id="button-area2">
+        <input class="normal-textbox" v-model="$store.state.name">
+    </div>
 
+    <div id="button-area">
+      <v-btn @click="Search">Search</v-btn>
+      <v-btn @click="clear">clear</v-btn>
+    </div>
 
-</div>
-
-<div v-if="ChangePage" ></div>
+    <div v-if="ChangePage" ></div>
 
     <wordcloud v-if="$store.state.predictLabel"
       :data="$store.state.predictLabel"
