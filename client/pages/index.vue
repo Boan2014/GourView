@@ -1,39 +1,22 @@
 <template>
   <div class="search bg">
-
     
 
     <div id="background">
     <h1 class="title">{{message}}</h1>
     <h1 class="subtitle">Explor with a single glance</h1>
     </div>
-<div id="button-area2">
-    <input class="normal-textbox" v-model="$store.state.name">
+
+    <div id="button-area2">
+        <input class="normal-textbox" @keyup.enter="Search" v-model="$store.state.name" style="border-radius:80px">
     </div>
 
-<div id="button-area">
-    <v-btn @click="Search">Search</v-btn>
-    <v-btn @click="clear">clear</v-btn>
+    <div id="button-area">
+      <v-btn @click="Search">Search</v-btn>
+      <v-btn @click="clear">clear</v-btn>
+    </div>
 
-
-</div>
-
-<div v-if="ChangePage" ></div>
-
-    <wordcloud v-if="$store.state.predictLabel"
-      :data="$store.state.predictLabel"
-      nameKey="name"
-      valueKey="value"
-      :color="myColors"
-      :showTooltip="true"
-      :wordClick="wordClickHandler">
-    </wordcloud>
-
-    <h1>{{ $store.state.posScore }}</h1>
-    <h3>{{ $store.state.posRev }}</h3>
-
-    <h1>{{ $store.state.negScore }}</h1>
-    <h3>{{ $store.state.negRev }}</h3>
+  <div v-if="ChangePage" ></div>
 
     <p class="aboutpage">
       <NuxtLink to="/about">
@@ -72,21 +55,9 @@ export default {
       console.log('test')
       this.isSearch= true
       this.$router.push('/afterSearch')
-
-    
-
-      // axios.post("http://localhost:5045/api/predict", {
-      //     name: this.$store.state.name
-      //   }).then((response) => {this.$store.commit('setPredictLabel', response.data.result)}).catch()
-      
-      
-      
-      },
-
-    
-
-    wordClickHandler(name, value, vm) {
-      console.log('wordClickHandler', name, value, vm);
+      axios.post("http://localhost:5045/api/predict", {
+          name: this.$store.state.name
+        }).then((response) => {this.$store.commit('setPredictLabel', response.data.result)})
     }
   },
   data() {
@@ -95,13 +66,8 @@ export default {
       message:"GOURVIEW",
       isSearch:false,
       ChangePage:false,
-      dummy:[{"name":"おいしい","value":3}]
-
     }
   },
- 
-
-  
 }
 </script>
 

@@ -19,7 +19,6 @@ class WordCloudService:
      
     def YahooReview(self,name):
         res = {}
-        YKeyId = "dj00aiZpPWFxT01BMnU0dVFKbCZzPWNvbnN1bWVyc2VjcmV0Jng9MGQ-"
         name = name
         YResUrl = "https://map.yahooapis.jp/search/local/V1/localSearch?appid="+ YKeyId+"&query="+name + "&output=json"
 
@@ -46,7 +45,6 @@ class WordCloudService:
         
     def GoogleReview(self, name):
         res = {}
-        GKeyId = "AIzaSyBHYpeYcMlW9LgD9YZ2-oJ-ZxtNCh65enA"
         name = name
         GResUrl = "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input="+ name+"&fileds=place_id&inputtype=textquery&key="+GKeyId
         
@@ -69,7 +67,6 @@ class WordCloudService:
 
     def GurunabiReview(self, name):
         res = {}
-        GuKeyId = "962a4a80cbead6a3722544f4363899fe"
         name = name
         GuResUrl = "https://api.gnavi.co.jp/RestSearchAPI/v3/?keyid=" + GuKeyId + "&name=" + name
   
@@ -129,7 +126,6 @@ class WordCloudService:
     
     def emotion(self,allReview):
         #APIキーを入力
-        key = "AIzaSyBHYpeYcMlW9LgD9YZ2-oJ-ZxtNCh65enA"
         posScore = 0
         negScore = 0
         posRev = {"score" : 0.0, "review" : ""}
@@ -171,9 +167,9 @@ class WordCloudService:
                         negRev["score"] = score
                         negRev["review"] = text
                 
-            #res = {"posScore":posScore,"negScore":negScore, "posRev":posRev,"negRev":negRev}
-            res = [posScore/posCount,negScore/negCount, posRev["review"],negRev["review"]]
-            return res
+        #res = {"posScore":posScore,"negScore":negScore, "posRev":posRev,"negRev":negRev}
+        res = [posScore/posCount,negScore/negCount, posRev["review"],negRev["review"]]
+        return res
         
     def nlp(self):
         allReview = {}
