@@ -1,6 +1,5 @@
 <template>
   <div class="search bg">
-    
     <div id="button-area3">
       <h3 class="title">{{message}}</h3>
     </div>
@@ -50,7 +49,7 @@ export default {
       this.$router.push('/afterSearch')
       axios.post("http://localhost:5045/api/predict", {
           name: this.$store.state.name
-        }).then((response) => {this.$store.commit('setPredictLabel', response.data.result)})
+        }).then((response) => {this.$store.commit('setPredictLabel', response.data.result, this.loading = false)})
     }
   },
   data() {
@@ -59,6 +58,9 @@ export default {
       message:"GOURVIEW",
       isSearch:false,
       ChangePage:false,
+      sections: [{ value: 25 }, { value: 25 }, { value: 25 }, { value: 25 }],
+      loading: true,
+
     }
   },
 }
