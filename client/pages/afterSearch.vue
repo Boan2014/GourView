@@ -1,5 +1,10 @@
 <template>
   <div class="bg">
+    
+    <div>
+     <apexcharts width="500" type="bar" :options="chartOptions" :series="series"></apexcharts>
+    </div>
+
     <div class='header'>
       <img class='image' @click="Home" src='https://4.bp.blogspot.com/-aJjlevJyK9U/XGjx40QThrI/AAAAAAABRco/j9aRPnYHpX4PU6RZjhTWRh6_8xnPfbNEQCLcBGAs/s800/animal_chara_computer_azarashi.png'></img>
       <input class="normal-textbox" @keyup.enter="Search" v-model="$store.state.name" style="border-radius:80px">
@@ -18,10 +23,16 @@
       :wordClick="wordClickHandler">
     </wordcloud>
 
-    <h1>{{ $store.state.posScore }}</h1>
+    <vc-donut v-if="$store.state.posPercent"
+    :sections="[{value: $store.state.posPercent}, { value:$store.state.negPercent}]">　{{ message }}</vc-donut>
+    
+
+    <h5>{{ $store.state.posPercent }}</h5>
+    <h5>{{ $store.state.negPercent }}</h5>
+
+
     <h5>{{ $store.state.posRev }}</h5>
 
-    <h1>{{ $store.state.negScore }}</h1>
     <h5>{{ $store.state.negRev }}</h5>
     
     <p class="homepage">
@@ -69,9 +80,7 @@ export default {
     return {
       myColors: ['#1f77b4', '#629fc9', '#94bedb', '#c9e0ef'],
       message:"GOURVIEW",
-      isSearch:false,
-      ChangePage:false,
-      dummy:[{"name":"おいしい","value":3}]
+      //sections: [{ value: this.$store.state.posPercent}, { value: this.$store.state.negPercent}]
 
     }
   },
