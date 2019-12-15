@@ -1,15 +1,31 @@
 <template>
  <div class="bg">
-    <p >
-    <NLink to="/">
-      Home page
-    </NLink>
-    </p>
-   <h1 class="title">{{message}}</h1>
-<div id=message>
+    
+
+ <h1 class="title">{{message}}</h1>
+
+
+<h1 class="about">About</h1>
+
+<p class="image">
+<img width="85%" src="~@/static/BK_01.png">
+</p>
+
+<div id=“message”>
    <p class="introduce"> 
      Hi there! Welcome to gourview, a website specilizing in visualized restaurant reviews. Explor and find out more about your favorite restaurant.
+<<<<<<< HEAD
+     <br> 
+     
+=======
+>>>>>>> ac5a944788349a308db8f4333bd27b4baf4b5da8
      </p>
+
+     <p id="homepage">
+    <NLink to="/">
+     | Home page |
+         </NLink>
+    </p>
 </div>
      
    
@@ -22,7 +38,7 @@
 export default {
    asyncData () {
     return {
-        message:"About us",
+        message:"GOURVIEW",
     }
   },
   head: {
@@ -33,22 +49,74 @@ export default {
 
 <style scoped>
 .title{
-    color:rgb(15, 15, 15);
-    font-size: 3rem !important;
+    color:rgb(243, 89, 18);
+    font-size: 1.7rem !important;
     line-height: 4rem;
-    text-align:center;
+    text-align:left;
+     border-bottom: 1px solid rgb(182, 63, 8);
+   margin:0% 10%;
+   padding-top:1rem;
+
+   
 }
 .introduce{
   color:rgb(14, 13, 13);
-  font-size: 1.5rem !important;
+  font-size: 20px!important;
   text-indent: 50px;
-  font-family: fantasy
+  padding-top:5%;
+  font-family:'Athelas';
+   margin:10% 23%;
+   font-weight: 
+   
 }
 #message{
   padding-top:5%;
 }
 .bg{
-  background-image: linear-gradient( rgb(240, 243, 235) , rgb(153, 187, 192), rgb(97, 138, 145),rgb(62, 113, 121),rgb(44, 75, 80));
+  background-color:white;
+}
+#background{
+  background-color:white;
+}
+#homepage{
+  text-align:center;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-weight:400;
+  font-size: 110%;
+  color:white;
+  background-color:rgba(108, 153, 143, 0.4);
+  height: 3rem;
+  padding-top:15px;
+  
+}
+#homepage a {
+  text-decoration: none;
+}
+.about{
+  text-align: center;
+  padding-top:50px;
+  font-family:'Hiragino Maru Gothic Pro';
+  font-size: 23px;
+  font-weight:130;
+  letter-spacing:2px;
+  animation-duration: 1s;
+  animation-name: slidein;
 }
 
+@keyframes slidein {
+  from {
+    margin-left: 100%;
+    width: 300%; 
+  }
+
+  to {
+    margin-left: 0%;
+    width: 100%;
+  }
+}
+.image{
+  padding-top:40px;
+  text-align: center;
+  }
+  
 </style>
