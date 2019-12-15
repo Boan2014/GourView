@@ -9,7 +9,6 @@
 <div id=message>
    <p class="introduce"> 
      Hi there! Welcome to gourview, a website specilizing in visualized restaurant reviews. Explor and find out more about your favorite restaurant.
-     </br> 
      </p>
 </div>
 

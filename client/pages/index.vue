@@ -51,10 +51,12 @@ export default {
     Search() {
       //this.isSearch= true
       this.$router.push('/afterSearch')
-
       axios.post("http://localhost:5045/api/predict", {
           name: this.$store.state.name
         }).then((response) => {this.$store.commit('setPredictLabel', response.data.result)})
+      
+      this.$store.commit('clear')
+
     }
   },
   data() {

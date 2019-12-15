@@ -11,11 +11,19 @@
         
           <v-btn class='botton1' @click="Search">Search</v-btn>
           <v-btn class='botton2' @click="clear">clear</v-btn>
-        <v-divider></v-divider> 
+      <toggle-p>Toggle Switch</toggle-p>
+        <div class="toggle-switch">
+          <toggle-input id="toggle" class="toggle-input" type='checkbox' />
+          <label for="toggle" class="toggle-label"/>
+        <span></span>
+        </div>
+        
     </div>
+    <br>
+    <v-divider></v-divider> 
 
     <wordcloud v-if="$store.state.predictLabel"
-      :data="$store.state.predictLabel"
+      :data="defaultWords"
       nameKey="name"
       valueKey="value"
       :color="myColors"
@@ -23,17 +31,22 @@
       :wordClick="wordClickHandler">
     </wordcloud>
 
-    <vc-donut v-if="$store.state.posPercent"
-    :sections="[{value: $store.state.posPercent}, { value:$store.state.negPercent}]">　{{ message }}</vc-donut>
-    
+    <br>
+    <v-divider></v-divider> 
+
+    <div class="graph">
+     <button class="btn-blue">
+      <img class='emoji1' v-if="true" src="https://raw.githubusercontent.com/Boan2014/Warehouse/master/Other/hate.gif">80%</img>
+     </button>
+      <vc-donut :size=250 thickness=40 v-if="true"
+      :sections="[{value: 20}, { value:80}]">　<img class='image' @click="Home" src='https://4.bp.blogspot.com/-aJjlevJyK9U/XGjx40QThrI/AAAAAAABRco/j9aRPnYHpX4PU6RZjhTWRh6_8xnPfbNEQCLcBGAs/s800/animal_chara_computer_azarashi.png'/></vc-donut>
+     <button class="btn-red">
+      <img class='emoji2' v-if="true" src="https://raw.githubusercontent.com/Boan2014/Warehouse/master/Other/good.gif">20%</img>
+     </button>
+    </div>
 
     <h5>{{ $store.state.posPercent }}</h5>
     <h5>{{ $store.state.negPercent }}</h5>
-
-
-    <h5>{{ $store.state.posRev }}</h5>
-
-    <h5>{{ $store.state.negRev }}</h5>
     
     </div>
     <p class="homepage">
@@ -72,6 +85,8 @@ export default {
           name: this.$store.state.name
         }).then((response) => {this.$store.commit('setPredictLabel', response.data.result)})
       
+      this.$store.commit('clear')
+
       },
     wordClickHandler(name, value, vm) {
       console.log('wordClickHandler', name, value, vm);
@@ -81,6 +96,43 @@ export default {
     return {
       myColors: ['#1f77b4', '#629fc9', '#94bedb', '#c9e0ef'],
       message:"GOURVIEW",
+      defaultWords: [{
+          "name": "Cat",
+          "value": 26
+        },
+        {
+          "name": "fish",
+          "value": 19
+        },
+        {
+          "name": "things",
+          "value": 18
+        },
+        {
+          "name": "look",
+          "value": 16
+        },
+        {
+          "name": "two",
+          "value": 15
+        },
+        {
+          "name": "fun",
+          "value": 9
+        },
+        {
+          "name": "know",
+          "value": 9
+        },
+        {
+          "name": "good",
+          "value": 9
+        },
+        {
+          "name": "play",
+          "value": 6
+        }
+      ],
       //sections: [{ value: this.$store.state.posPercent}, { value: this.$store.state.negPercent}]
 
     }
@@ -116,7 +168,7 @@ export default {
   display:flex;
   align-items: center;
   padding-top: 1px;
-  text-align:center;
+  justify-content:center;
 
   }
 
@@ -127,16 +179,127 @@ export default {
     width:40%;
     height: 30px;
     margin-right:16px;
-    text-align:center;
+    padding-left: 8px;
+    outline:none;
   }
 
   .image{
     width:55px;
     margin-right:8px;
-    text-align:center;
+  }
+  .toggle-input {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  opacity: 0;
+  cursor: pointer;
+}
+
+label {
+  width: 75px;
+  height: 42px;
+  background: #ccc;
+  position: relative;
+  display: inline-block;
+  border-radius: 46px;
+  transition: 0.4s;
+  box-sizing: border-box;
+}
+label:after {
+  content: '';
+  position: absolute;
+  width: 42px;
+  height: 42px;
+  border-radius: 100%;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  background: #fff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  transition: 0.4s;
+}
+
+input:checked + label {
+  background-color: #4BD865;
+}
+input:checked + label:after {
+  left: 40px;
+}
+
+toggle-p {
+  margin-top: 50px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.toggle-switch {
+  position: relative;
+  width: 75px;
+  height: 42px;
+  margin: auto;
+}
+
+
+  .btn-blue{
+    padding: 0.25em 0.75em;
+    margin: 2em 0;
+    color: #FFF;
+    background: #36A2EB;
+    border-bottom: solid 6px #1F77B4;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
+    border-radius: 9px;
+    margin-right: 16px;
+    outline:none;
+
+  }
+  .btn-blue:active {
+  /*ボタンを押したとき*/
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);/*下に動く*/
+  border-bottom: none;/*線を消す*/
+}
+  .btn-red{
+    padding: 0.25em 0.75em;
+    margin: 2em 0;
+    color: #FFF;
+    background: #FF6384;
+    border-bottom: solid 6px #CF486A;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
+    border-radius: 9px;
+    margin-left: 16px;
+    outline:none;
+    
+  }
+   .btn-red:active {
+  /*ボタンを押したとき*/
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);/*下に動く*/
+  border-bottom: none;/*線を消す*/
+  }
+
+
+  .graph{
+    display:flex;
+    align-items: center;
+    justify-content:center;
+    padding-top: 5px;
 
   }
 
+  .emoji1{
+    width:50px;
+    margin-bottom: 0px;
+    
+
+  }
+  .emoji2{
+    width:50px;
+     
+
+  }
   
   .homepage{
     color:rgba(20, 4, 4, 0.5);
