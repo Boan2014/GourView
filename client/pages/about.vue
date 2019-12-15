@@ -1,19 +1,22 @@
 <template>
-<div class="bg">
-    
+ <div class="bg">
+    <p >
+    <NLink to="/">
+      Home page
+    </NLink>
+    </p>
    <h1 class="title">{{message}}</h1>
 <div id=message>
    <p class="introduce"> 
      Hi there! Welcome to gourview, a website specilizing in visualized restaurant reviews. Explor and find out more about your favorite restaurant.
      </br> 
      </p>
-   <p class="homepage">
-      <NuxtLink to="/">←Home</NuxtLink>
-   </p>
-    
+</div>
+
+
+
   </div>
- </div>
-  
+
 </template>
 
 <script>

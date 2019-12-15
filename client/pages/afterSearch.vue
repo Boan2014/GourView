@@ -1,6 +1,6 @@
 <template>
   <div class="bg">
-    
+    <div class='bottons'>
     <div>
      <apexcharts width="500" type="bar" :options="chartOptions" :series="series"></apexcharts>
     </div>
@@ -8,10 +8,10 @@
     <div class='header'>
       <img class='image' @click="Home" src='https://4.bp.blogspot.com/-aJjlevJyK9U/XGjx40QThrI/AAAAAAABRco/j9aRPnYHpX4PU6RZjhTWRh6_8xnPfbNEQCLcBGAs/s800/animal_chara_computer_azarashi.png'></img>
       <input class="normal-textbox" @keyup.enter="Search" v-model="$store.state.name" style="border-radius:80px">
-        <div class='botton'>
-          <v-btn @click="Search">Search</v-btn>
-          <v-btn  @click="clear">clear</v-btn>
-        </div>
+        
+          <v-btn class='botton1' @click="Search">Search</v-btn>
+          <v-btn class='botton2' @click="clear">clear</v-btn>
+        <v-divider></v-divider> 
     </div>
 
     <wordcloud v-if="$store.state.predictLabel"
@@ -35,6 +35,7 @@
 
     <h5>{{ $store.state.negRev }}</h5>
     
+    </div>
     <p class="homepage">
       <NuxtLink to="/">←Home</NuxtLink>
    </p>
@@ -91,19 +92,31 @@ export default {
   .bg {
    background-color:white;
    height:100vh;
+   text-align:center;
+   
 
   }
+  .buttons{
+    text-align:center;
+  }
 
-  .botton{
-   width:15%;
-   margin-right:8px;
+  .botton1{
+   width:30px;
+   margin-right:16px;
+   text-align:center;
     
   }
-
+  .botton2{
+   width:30px;
+   margin-right:16px;
+   text-align:center;
+    
+  }
   .header{
   display:flex;
   align-items: center;
   padding-top: 1px;
+  text-align:center;
 
   }
 
@@ -111,14 +124,16 @@ export default {
     color:#000000;
     background-color: #f5f4f1;
     border:1px black solid;
-    width:60%;
+    width:40%;
+    height: 30px;
     margin-right:16px;
+    text-align:center;
   }
 
   .image{
-    width:20%;
+    width:55px;
     margin-right:8px;
-    
+    text-align:center;
 
   }
 

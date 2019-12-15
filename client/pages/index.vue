@@ -1,26 +1,28 @@
 <template>
   <div class="search bg">
-    
-    <div id="button-area3">
-      <h3 class="title">{{message}}</h3>
+
+    <div class="background">
+    <h1 class="title">{{message}}</h1>
+    <h1 class="subtitle">Explor with a single glance</h1>
     </div>
 
-    <div id="button-area2">
+    <div class="button-area2">
         <input class="normal-textbox" @keyup.enter="Search" v-model="$store.state.name" style="border-radius:80px">
     </div>
 
-    <div id="button-area">
-      <v-btn @click="Search">Search</v-btn>
-      <v-btn @click="clear">clear</v-btn>
-    </div>
+    
+      <v-btn class="button1" @click="Search">Search</v-btn>
+      <v-btn class="button2" @click="clear">clear</v-btn>
+    
 
-
-  <img v-if="loadig" src='https://4.bp.blogspot.com/-aJjlevJyK9U/XGjx40QThrI/AAAAAAABRco/j9aRPnYHpX4PU6RZjhTWRh6_8xnPfbNEQCLcBGAs/s800/animal_chara_computer_azarashi.png'></img>
-  <div v-if="loadig">Searching・・・・</div>
-
-    <p>
-      <NuxtLink to="/about" class=>
+    <p class="aboutpage">
+      <NuxtLink to="/about">
         About page
+      </NuxtLink>
+    </p>
+     <p class="Githubpage">
+      <NuxtLink to="/github">
+        Github
       </NuxtLink>
     </p>
 
@@ -47,22 +49,20 @@ export default {
     },
     // APIを叩くメソッド
     Search() {
-      console.log('test')
-      this.loading= true
+      //this.isSearch= true
       this.$router.push('/afterSearch')
+
       axios.post("http://localhost:5045/api/predict", {
           name: this.$store.state.name
-        }).then((response) => {this.$store.commit('setPredictLabel', response.data.result),this.loading = false})
-    },
-    
+        }).then((response) => {this.$store.commit('setPredictLabel', response.data.result)})
+    }
   },
   data() {
     return {
       myColors: ['#1f77b4', '#629fc9', '#94bedb', '#c9e0ef'],
       message:"GOURVIEW",
-      isSearch:false,
-      ChangePage:false,
-      loading: false,
+      //isSearch:false,
+
     }
   },
 }
@@ -73,40 +73,64 @@ export default {
   text-align: center;
   }
   .bg {
-  background-image:url("~@/static/BK_01.jpg");
-  background-size: cover;
+  background-color:rgb(245, 245, 243);
+
   }
-  #button-area {
+  .button1 {
     padding-top: 30px;
+    margin-right: 15px;
+    
+   
   }
-  #button-area2 {
-    padding-top: 50px;
+  .button2 {
+    padding-top: 30px;
+    margin-right: 15px;
+    
+   
   }
-  #button-area3 {
-    padding-top: 200px;
-    color:rgb(11, 12, 11);
+
+  .button-area2 {
+    padding-top: 10px;
+    margin-bottom: 7px;
+    
+  }
+  .background {
+
+    background-image:url("~@/static/BK_04.jpg");
+    background-size:100%;
+    height: 25rem;
+    padding-top: 130px;
+    text-align:center;
+
       }
-  
+
   .normal-textbox {
     color:#000000;
-    background-color: #f5f4f1;
-    border:1px black solid;
-    width:600px;
+    background-color: rgb(245, 245, 243);
+    border:1px rgb(201, 67, 4) solid;
+    width:500px;
     height: 50px;
   }
   .title{
-    background-color:burlywood;
-    color:black;
-    font-size: 4rem;
-    line-height: 5rem;
-    
+    color:rgb(243, 89, 18);
+    font-size: 5rem !important;
   }
-
-  
   .aboutpage{
     background-color:rgba(34, 33, 33, 0.5);
     text-align:right;
-    text-decoration: none !important;
+    margin-top: 30px;
   }
-  
+  .Githubpage{
+    background-color:rgba(34, 33, 33, 0.5);
+    text-align:right;
+    margin-bottom: 0px;
+  }
+  .subtitle{
+    font-family:'Trebuchet';
+    font-size:1.5rem;
+    color:rgb(243, 89, 18);
+
+
+  }
+
 </style>
