@@ -4,7 +4,7 @@
     <div>
      <apexcharts width="500" type="bar" :options="chartOptions" :series="series"></apexcharts>
     </div>
-
+    
     <div class='header'>
       <img class='image' @click="Home" src='https://4.bp.blogspot.com/-aJjlevJyK9U/XGjx40QThrI/AAAAAAABRco/j9aRPnYHpX4PU6RZjhTWRh6_8xnPfbNEQCLcBGAs/s800/animal_chara_computer_azarashi.png'></img>
       <input class="normal-textbox" @keyup.enter="Search" v-model="$store.state.name" style="border-radius:80px">
@@ -21,6 +21,8 @@
     </div>
     <br>
     <v-divider></v-divider> 
+    
+    <h1>{{ $store.state.shopName }}</h1>
 
     <wordcloud v-if="$store.state.predictLabel"
       :data="defaultWords"
@@ -33,6 +35,16 @@
 
     <br>
     <v-divider></v-divider> 
+    <img v-if="$store.state.predictLabel===0"  src='https://4.bp.blogspot.com/-aJjlevJyK9U/XGjx40QThrI/AAAAAAABRco/j9aRPnYHpX4PU6RZjhTWRh6_8xnPfbNEQCLcBGAs/s800/animal_chara_computer_azarashi.png'/>
+
+    <div>
+
+      <img class='emoji' v-if="$store.state.posPercent || $store.state.negPercent" src="https://raw.githubusercontent.com/Boan2014/Warehouse/master/Other/good.gif">{{ $store.state.posPercent }}</img>
+
+      <vc-donut :size=200 thickness=40 v-if="$store.state.posPercent || $store.state.negPercent"
+      :sections="[{value: $store.state.posPercent}, { value:$store.state.negPercent}]">　<img class='image' @click="Home" src='https://4.bp.blogspot.com/-aJjlevJyK9U/XGjx40QThrI/AAAAAAABRco/j9aRPnYHpX4PU6RZjhTWRh6_8xnPfbNEQCLcBGAs/s800/animal_chara_computer_azarashi.png'/></vc-donut>
+      
+      <img class='emoji' v-if="$store.state.posPercent || $store.state.negPercent" src="https://raw.githubusercontent.com/Boan2014/Warehouse/master/Other/hate.gif">{{ $store.state.negPercent }}</img>
 
     <div class="graph">
      <button class="btn-blue">
@@ -52,6 +64,7 @@
     <p class="homepage">
       <NuxtLink to="/">←Home</NuxtLink>
    </p>
+  </div>
   </div>
 </template>
 
@@ -134,7 +147,6 @@ export default {
         }
       ],
       //sections: [{ value: this.$store.state.posPercent}, { value: this.$store.state.negPercent}]
-
     }
   },
 }
