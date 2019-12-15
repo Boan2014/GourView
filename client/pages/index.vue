@@ -1,22 +1,19 @@
 <template>
   <div class="search bg">
     
-
     <div id="background">
     <h1 class="title">{{message}}</h1>
     <h1 class="subtitle">Explor with a single glance</h1>
     </div>
 
     <div id="button-area2">
-        <input class="normal-textbox" @keyup.enter="Search" v-model="$store.state.name" style="border-radius:80px">
+        <input class="normal-textbox" v-model="$store.state.name" style="border-radius:80px">
     </div>
 
     <div id="button-area">
       <v-btn @click="Search">Search</v-btn>
       <v-btn @click="clear">clear</v-btn>
     </div>
-
-  <div v-if="ChangePage" ></div>
 
     <p class="aboutpage">
       <NuxtLink id="github" to="/github">
@@ -51,20 +48,22 @@ export default {
     },
     // APIを叩くメソッド
     Search() {
-      console.log('test')
-      this.isSearch= true
+      //this.isSearch= true
       this.$router.push('/afterSearch')
       axios.post("http://localhost:5045/api/predict", {
           name: this.$store.state.name
         }).then((response) => {this.$store.commit('setPredictLabel', response.data.result)})
+      
+      this.$store.commit('clear')
+
     }
   },
   data() {
     return {
       myColors: ['#1f77b4', '#629fc9', '#94bedb', '#c9e0ef'],
       message:"GOURVIEW",
-      isSearch:false,
-      ChangePage:false,
+      //isSearch:false,
+
     }
   },
 }
