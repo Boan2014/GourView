@@ -19,15 +19,14 @@
   <div v-if="ChangePage" ></div>
 
     <p class="aboutpage">
+      <NuxtLink id="github" to="/github">
+        Github
+      </NuxtLink>
       <NuxtLink to="/about">
         About page
       </NuxtLink>
-    </p>
-     <p class="aboutpage">
-      <NuxtLink to="/github">
-        Github
-      </NuxtLink>
-    </p>
+
+      </p>
 
   </div>
 
@@ -76,11 +75,12 @@ export default {
   text-align: center;
   }
   .bg {
-  background-color:rgb(245, 245, 243);
+  background-color:white;
   
   }
   #button-area {
     padding-top: 30px;
+    padding-bottom:20rem
   }
   #button-area2 {
     padding-top: 50px;
@@ -89,7 +89,7 @@ export default {
 
     background-image:url("~@/static/BK_04.jpg");
     background-size:100%;
-    height: 25rem;
+    height: 20rem;
     padding-top: 130px;
     text-align:center;
     
@@ -97,7 +97,7 @@ export default {
   
   .normal-textbox {
     color:#000000;
-    background-color: rgb(245, 245, 243);
+    background-color: white;
     border:1px rgb(201, 67, 4) solid;
     width:500px;
     height: 50px;
@@ -105,15 +105,28 @@ export default {
   .title{
     color:rgb(243, 89, 18);
     font-size: 5rem !important;
+    text-shadow:3px 3px 2px #181004
   }
   .aboutpage{
-    background-color:rgba(34, 33, 33, 0.5);
-    text-align:right;
+    background-color:rgba(108, 153, 143, 0.4);
+    text-align:center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight:400;
+    padding-bottom: 0px;
+    height:2rem;
+    padding-top:6px;
+  }
+  .aboutpage a {
+    text-decoration: none;
+  }
+  #github{
+    padding-right:5%
   }
   .subtitle{
     font-family:'Trebuchet';
     font-size:1.5rem;
-    color:rgb(243, 89, 18);
+    color:rgb(196, 84, 40);
+    text-shadow:1px 1px 1px #2c1c04
    
     
   }
