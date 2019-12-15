@@ -14,11 +14,6 @@
 <div id=“message”>
    <p class="introduce"> 
      Hi there! Welcome to gourview, a website specilizing in visualized restaurant reviews. Explor and find out more about your favorite restaurant.
-<<<<<<< HEAD
-     <br> 
-     
-=======
->>>>>>> ac5a944788349a308db8f4333bd27b4baf4b5da8
      </p>
 
      <p id="homepage">
