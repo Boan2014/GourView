@@ -1,10 +1,10 @@
 <template>
   <div class="bg">
-    
+
     <div>
      <apexcharts width="500" type="bar" :options="chartOptions" :series="series"></apexcharts>
     </div>
-
+    
     <div class='header'>
       <img class='image' @click="Home" src='https://4.bp.blogspot.com/-aJjlevJyK9U/XGjx40QThrI/AAAAAAABRco/j9aRPnYHpX4PU6RZjhTWRh6_8xnPfbNEQCLcBGAs/s800/animal_chara_computer_azarashi.png'/>
       <input class="normal-textbox" v-model="$store.state.name" style="border-radius:80px">
@@ -13,6 +13,8 @@
           <v-btn  @click="clear">clear</v-btn>
         </div>
     </div>
+    
+    <h1>{{ $store.state.shopName }}</h1>
 
     <wordcloud v-if="$store.state.predictLabel"
       :data="$store.state.predictLabel"
@@ -22,6 +24,8 @@
       :showTooltip="true"
       :wordClick="wordClickHandler">
     </wordcloud>
+
+    <img v-if="$store.state.predictLabel===0"  src='https://4.bp.blogspot.com/-aJjlevJyK9U/XGjx40QThrI/AAAAAAABRco/j9aRPnYHpX4PU6RZjhTWRh6_8xnPfbNEQCLcBGAs/s800/animal_chara_computer_azarashi.png'/>
 
     <div>
 
@@ -84,7 +88,6 @@ export default {
       myColors: ['#1f77b4', '#629fc9', '#94bedb', '#c9e0ef'],
       message:"GOURVIEW",
       //sections: [{ value: this.$store.state.posPercent}, { value: this.$store.state.negPercent}]
-
     }
   },
 }

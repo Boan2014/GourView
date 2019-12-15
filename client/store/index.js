@@ -7,6 +7,7 @@ const　initialState = {
   predictLabel: [],
   posPercent : "",
   negPercent : "", 
+  shopName : "",
 };
 
 export const state = () => Object.assign({}, initialState);
@@ -16,6 +17,7 @@ export const mutations ={
       state.predictLabel = predictLabel[0]
       state.posPercent = predictLabel[1][0]
       state.negPercent = predictLabel[1][1]
+      state.shopName = predictLabel[2]
     },
     clear(state) {
       for (let key in state) {
