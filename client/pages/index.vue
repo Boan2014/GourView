@@ -7,7 +7,7 @@
     </div>
 
     <div id="button-area2">
-        <input class="normal-textbox" @keyup.enter="Search" v-model="$store.state.name" style="border-radius:80px">
+        <input class="normal-textbox" v-model="$store.state.name" style="border-radius:80px">
     </div>
 
     <div id="button-area">
@@ -51,10 +51,12 @@ export default {
     Search() {
       //this.isSearch= true
       this.$router.push('/afterSearch')
-
       axios.post("http://localhost:5045/api/predict", {
           name: this.$store.state.name
         }).then((response) => {this.$store.commit('setPredictLabel', response.data.result)})
+      
+      this.$store.commit('clear')
+
     }
   },
   data() {

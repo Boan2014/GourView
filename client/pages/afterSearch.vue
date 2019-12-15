@@ -6,8 +6,8 @@
     </div>
 
     <div class='header'>
-      <img class='image' @click="Home" src='https://4.bp.blogspot.com/-aJjlevJyK9U/XGjx40QThrI/AAAAAAABRco/j9aRPnYHpX4PU6RZjhTWRh6_8xnPfbNEQCLcBGAs/s800/animal_chara_computer_azarashi.png'></img>
-      <input class="normal-textbox" @keyup.enter="Search" v-model="$store.state.name" style="border-radius:80px">
+      <img class='image' @click="Home" src='https://4.bp.blogspot.com/-aJjlevJyK9U/XGjx40QThrI/AAAAAAABRco/j9aRPnYHpX4PU6RZjhTWRh6_8xnPfbNEQCLcBGAs/s800/animal_chara_computer_azarashi.png'/>
+      <input class="normal-textbox" v-model="$store.state.name" style="border-radius:80px">
         <div class='botton'>
           <v-btn @click="Search">Search</v-btn>
           <v-btn  @click="clear">clear</v-btn>
@@ -23,17 +23,18 @@
       :wordClick="wordClickHandler">
     </wordcloud>
 
-    <vc-donut v-if="$store.state.posPercent"
-    :sections="[{value: $store.state.posPercent}, { value:$store.state.negPercent}]">　{{ message }}</vc-donut>
-    
+    <div>
 
+      <img class='emoji' v-if="$store.state.posPercent || $store.state.negPercent" src="https://raw.githubusercontent.com/Boan2014/Warehouse/master/Other/good.gif">{{ $store.state.posPercent }}</img>
+
+      <vc-donut :size=200 thickness=40 v-if="$store.state.posPercent || $store.state.negPercent"
+      :sections="[{value: $store.state.posPercent}, { value:$store.state.negPercent}]">　<img class='image' @click="Home" src='https://4.bp.blogspot.com/-aJjlevJyK9U/XGjx40QThrI/AAAAAAABRco/j9aRPnYHpX4PU6RZjhTWRh6_8xnPfbNEQCLcBGAs/s800/animal_chara_computer_azarashi.png'/></vc-donut>
+      
+      <img class='emoji' v-if="$store.state.posPercent || $store.state.negPercent" src="https://raw.githubusercontent.com/Boan2014/Warehouse/master/Other/hate.gif">{{ $store.state.negPercent }}</img>
+
+    </div>
     <h5>{{ $store.state.posPercent }}</h5>
     <h5>{{ $store.state.negPercent }}</h5>
-
-
-    <h5>{{ $store.state.posRev }}</h5>
-
-    <h5>{{ $store.state.negRev }}</h5>
     
     <p class="homepage">
       <NuxtLink to="/">←Home</NuxtLink>
@@ -71,6 +72,8 @@ export default {
           name: this.$store.state.name
         }).then((response) => {this.$store.commit('setPredictLabel', response.data.result)})
       
+      this.$store.commit('clear')
+
       },
     wordClickHandler(name, value, vm) {
       console.log('wordClickHandler', name, value, vm);
@@ -118,6 +121,11 @@ export default {
   .image{
     width:20%;
     margin-right:8px;
+  }
+
+  .emoji{
+    width:5%;
+    margin-left:100px;
     
 
   }
